@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">ExchangeRates</string>
     <string name="sort">Sort</string>
+    <string name="by_name">by name ascending</string>
+    <string name="by_name_desc">by name descending</string>
+    <string name="by_value">by value ascending</string>
+    <string name="by_value_desc">by value descending</string>
+    <string name="save">save</string>
+    <string name="favorites">Favorites</string>
+    <string name="currencies">Currencies</string>
+    <string name="currency">Currency: %1$s</string>
+    <string name="usd">USD</string>
+    <string name="main">Main</string>
+    <string name="favorite_was_deleted">Favorite was deleted</string>
+    <string name="undo">Undo</string>
 </resources>
