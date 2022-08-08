@@ -4,36 +4,36 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.pakollya.exchangerates.R
-import com.pakollya.exchangerates.data.database.currency.Currency
-import com.pakollya.exchangerates.databinding.ListItemCurrencyBinding
+import com.pakollya.exchangerates.data.database.name.CurrencyName
+import com.pakollya.exchangerates.databinding.ListItemCurrencyNameBinding
 import com.pakollya.exchangerates.domain.CurrencyInteractor
 
-class CurrencyListAdapter(
-    private val interactor: CurrencyInteractor,
-    private val favoriteClick: (String) -> Unit
-) : ListAdapter<Currency, CurrencyViewHolder>(CurrencyDiffUtil()) {
+class CurrencyNameListAdapter(
+    private val clickItem: (String) -> Unit,
+    private val interactor: CurrencyInteractor
+) : ListAdapter<CurrencyName, CurrencyNameViewHolder>(CurrencyNameDiffUtil()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ) = CurrencyViewHolder(
-        ListItemCurrencyBinding.inflate(
+    ) = CurrencyNameViewHolder(
+        ListItemCurrencyNameBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         ),
         interactor,
-        favoriteClick
+        clickItem
     )
 
     override fun onBindViewHolder(
-        holder: CurrencyViewHolder,
+        holder: CurrencyNameViewHolder,
         position: Int
     ) {
         holder.onBind(currentList[position])
     }
 
     override fun getItemViewType(position: Int): Int {
-        return R.layout.list_item_currency
+        return R.layout.list_item_currency_name
     }
 }

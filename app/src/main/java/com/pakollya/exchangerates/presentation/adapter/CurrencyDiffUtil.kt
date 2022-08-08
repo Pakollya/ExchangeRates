@@ -1,7 +1,7 @@
 package com.pakollya.exchangerates.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.pakollya.exchangerates.data.database.entity.Currency
+import com.pakollya.exchangerates.data.database.currency.Currency
 
 class CurrencyDiffUtil : DiffUtil.ItemCallback<Currency>() {
     override fun areItemsTheSame(oldItem: Currency, newItem: Currency): Boolean {
