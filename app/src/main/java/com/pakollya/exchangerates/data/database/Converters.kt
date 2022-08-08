@@ -3,7 +3,7 @@ package com.pakollya.exchangerates.data.database
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.pakollya.exchangerates.data.database.entity.Currency
+import com.pakollya.exchangerates.data.database.currency.Currency
 
 class CurrencyListConverter{
     private val gson = Gson()
