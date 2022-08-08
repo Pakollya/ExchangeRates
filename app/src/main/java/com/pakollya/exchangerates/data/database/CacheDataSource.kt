@@ -2,10 +2,13 @@ package com.pakollya.exchangerates.data.database
 
 import android.content.Context
 import androidx.room.Room
+import com.pakollya.exchangerates.data.database.currency.CurrencyListDao
+import com.pakollya.exchangerates.data.database.favorite.CurrencyFavoriteDao
+import com.pakollya.exchangerates.data.database.name.CurrencyNameDao
+import com.pakollya.exchangerates.data.database.settings.CurrencySettingsDao
 
-interface CacheDataSource:
-    CurrencyRateDataSource, CurrencyListDataSource,
-    CurrencyNameDataSource, CurrencyFavoriteDataSource, CurrencySettingsDataSource
+interface CacheDataSource: CurrencyListDataSource, CurrencyNameDataSource,
+    CurrencyFavoriteDataSource, CurrencySettingsDataSource
 {
 
     class BaseDataSource(context: Context, databaseName: String) : CacheDataSource {
@@ -15,10 +18,6 @@ interface CacheDataSource:
             AppDatabase::class.java,
             databaseName
         ).build()
-
-        override fun currencyRateDao(): CurrencyRateDao {
-            return appDatabase.currencyRateDao()
-        }
 
         override fun currencyListDao(): CurrencyListDao {
             return  appDatabase.currencyListDao()
@@ -36,10 +35,6 @@ interface CacheDataSource:
             return appDatabase.currencySettingsDao()
         }
     }
-}
-
-interface CurrencyRateDataSource{
-    fun currencyRateDao(): CurrencyRateDao
 }
 
 interface CurrencyListDataSource{
