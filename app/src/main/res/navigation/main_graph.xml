@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/currenciesFragment"
+    >
+
+    <fragment
+        android:id="@+id/currenciesFragment"
+        android:name="com.pakollya.exchangerates.currencies.presentation.CurrenciesFragment"
+        app:defaultNavHost="true"
+        android:label="@string/main"
+        tools:layout="@layout/currency_list_layout"
+        >
+
+
+        <action
+            android:id="@+id/action_currenciesFragment_to_namesFragment"
+            app:destination="@id/namesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/namesFragment"
+        android:name="com.pakollya.exchangerates.names.presentation.NamesFragment"
+        android:label="@string/currencies"
+        tools:layout="@layout/currency_name_list_layout"
+        />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.pakollya.exchangerates.favorites.presentation.FavoritesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/currency_list_layout"
+        >
+        <action
+            android:id="@+id/action_favoritesFragment_to_namesFragment"
+            app:destination="@id/namesFragment" />
+    </fragment>
+
+</navigation>
