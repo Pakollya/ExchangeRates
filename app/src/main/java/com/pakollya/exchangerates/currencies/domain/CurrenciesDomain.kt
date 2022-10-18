@@ -36,8 +36,8 @@ interface CurrenciesDomain {
                 val itemList = mutableListOf<ItemUi>(DateUi("Last update: $date"))
                 itemList.addAll(list.map {
                     CurrencyUi(
-                        it.name, "${it.name}: ${it.value}",
-                        cacheDataSource.isFavorite(it.name), changeFavorite
+                        id = it.name, name = it.name, value = "${it.value}",
+                        isFavorite = cacheDataSource.isFavorite(it.name), changeFavorite = changeFavorite
                     )
                 })
                 val baseItem = BaseCurrencyUi(base)
