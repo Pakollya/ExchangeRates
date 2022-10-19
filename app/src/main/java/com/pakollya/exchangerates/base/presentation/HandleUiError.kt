@@ -9,7 +9,7 @@ import com.pakollya.exchangerates.base.domain.ServiceUnavailableException
 
 abstract class HandleUiErrorAbstract(
     private val resourcesManager: ResourcesManager,
-    private val errorCommunication: ErrorCommunication.Update,
+    private val errorCommunication: ErrorCommunication,
     private val handleError: HandleError = BaseHandleUiError(resourcesManager, errorCommunication)
 ) : HandleError {
 
@@ -36,7 +36,7 @@ abstract class HandleUiErrorAbstract(
 
 class BaseHandleUiError(
     private val resourcesManager: ResourcesManager,
-    private val errorCommunication: ErrorCommunication.Update
+    private val errorCommunication: ErrorCommunication
 ) : HandleError {
 
     override fun handle(error: Exception): Exception {
@@ -47,5 +47,5 @@ class BaseHandleUiError(
 
 class HandleUiError(
     private val resourcesManager: ResourcesManager,
-    private val errorCommunication: ErrorCommunication.Update
+    private val errorCommunication: ErrorCommunication
 ) : HandleUiErrorAbstract(resourcesManager, errorCommunication)
