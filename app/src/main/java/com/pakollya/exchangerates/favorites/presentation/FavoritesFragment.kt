@@ -53,7 +53,7 @@ class FavoritesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
 
         val uiMapper = UiMapper(binding.baseButton)
 
-        viewModel.observe(this) { currenciesUi ->
+        viewModel.observeList(this) { currenciesUi ->
             currenciesUi?.map(currenciesAdapter)
             currenciesUi?.mapBase(uiMapper)
         }
@@ -63,15 +63,17 @@ class FavoritesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
         }
 
         viewModel.observeBaseCurrency(this) {
-            viewModel.updateFavorites()
+            viewModel.showCurrencies()
         }
 
         viewModel.observeSorting(this) {
-            viewModel.updateFavorites()
+            viewModel.showCurrencies()
         }
 
         viewModel.observeError(this) {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
+
+        viewModel.init(savedInstanceState == null)
     }
 }

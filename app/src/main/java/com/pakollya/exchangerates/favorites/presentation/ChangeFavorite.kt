@@ -8,7 +8,7 @@ interface ChangeFavorite {
 
     class Base(
         private val changeFavorite: ChangeFavorite,
-        private val communication: UpdateSorting.Update
+        private val communication: UpdateSorting
     ) : ChangeFavorite {
 
         override fun changeFavorite(id: String) {

@@ -53,7 +53,7 @@ class CurrenciesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
 
         BottomSheetClickListener.Base().apply(binding.sortButton, requireActivity())
 
-        viewModel.observe(this) { currenciesUi ->
+        viewModel.observeList(this) { currenciesUi ->
             currenciesUi.map(currenciesAdapter)
             currenciesUi.mapBase(uiMapper)
         }
@@ -63,15 +63,17 @@ class CurrenciesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
         }
 
         viewModel.observeBaseCurrency(this) {
-            viewModel.updateCurrencies()
+            viewModel.showCurrencies()
         }
 
         viewModel.observeSorting(this) {
-            viewModel.updateCurrencies()
+            viewModel.showCurrencies()
         }
 
         viewModel.observeError(this) {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
+
+        viewModel.init(savedInstanceState == null)
     }
 }
