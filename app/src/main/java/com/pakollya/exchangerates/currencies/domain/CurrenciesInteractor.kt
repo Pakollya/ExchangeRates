@@ -27,4 +27,20 @@ interface CurrenciesInteractor {
             return@handle data.map(domainMapper)
         }
     }
+
+    class Favorite(
+        private val domainMapper: CurrenciesDomain.Mapper<CurrenсiesUi>,
+        private val currencyRepository: CommonCurrencyRepository,
+        dispatchers: Dispatchers,
+        handleError: HandleError
+    ) : Interactor.Abstract(dispatchers, handleError), CurrenciesInteractor {
+
+        override suspend fun currencies(
+            atFinish: () -> Unit,
+            successful: (CurrenсiesUi) -> Unit
+        ) = handle(successful, atFinish) {
+            val data = currencyRepository.favorites()
+            return@handle data.map(domainMapper)
+        }
+    }
 }
