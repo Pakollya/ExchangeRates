@@ -1,32 +1,33 @@
 package com.pakollya.exchangerates.currencies.data.cache
 
-import android.content.Context
-import androidx.room.Room
-import com.pakollya.exchangerates.names.data.cache.CurrencyNameDao
+import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache.Currencies
+import com.pakollya.exchangerates.currencies.data.cloud.ExchangeRatesCloud
+import com.pakollya.exchangerates.currencies.data.cloud.ExchangeRatesCloud.ExchangeRates
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
-interface CurrenciesCacheDataSource : CurrencyDataSource, CurrencyNameDataSource {
-    class Base(context: Context, databaseName: String) : CurrenciesCacheDataSource {
+interface CurrenciesCacheDataSource {
 
-        private val appDatabase: AppDatabase = Room.databaseBuilder(
-            context.applicationContext,
-            AppDatabase::class.java,
-            databaseName
-        ).build()
+    suspend fun currencies(base: String): Currencies
 
-        override fun currencyDao(): CurrenciesDao {
-            return appDatabase.currencyDao()
+    suspend fun saveCurrencies(rates: ExchangeRates)
+
+    class Base(
+        private val dao: CurrenciesDao,
+        private val mapper: ExchangeRatesCloud.Mapper<Currencies>,
+    ) : CurrenciesCacheDataSource {
+
+        private val mutex = Mutex()
+
+        override suspend fun currencies(base: String): Currencies = mutex.withLock {
+            return if (dao.currenciesExist(base))
+                dao.currencies(base)
+            else
+                Currencies("", "", emptyList())
         }
 
-        override fun currencyNameDao(): CurrencyNameDao {
-            return appDatabase.currencyNameDao()
+        override suspend fun saveCurrencies(rates: ExchangeRates) = mutex.withLock {
+            dao.insertCurrencies(rates.map(mapper))
         }
     }
-}
-
-interface CurrencyDataSource {
-    fun currencyDao(): CurrenciesDao
-}
-
-interface CurrencyNameDataSource {
-    fun currencyNameDao(): CurrencyNameDao
 }
