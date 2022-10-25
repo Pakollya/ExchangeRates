@@ -18,7 +18,6 @@ interface CurrenciesCommunications : ObserveCurrencies {
 
     abstract class CurrenciesCommunicationsAbstract(
         private val progress: ProgressCommunication,
-        private val baseCurrency: BaseCurrencyCommunication,
         private val sorting: UpdateSorting,
         private val error: ErrorCommunication,
         private val currenciesList: Communication.Mutable<CurrenсiesUi>,
@@ -34,9 +33,6 @@ interface CurrenciesCommunications : ObserveCurrencies {
         override fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>) =
             progress.observe(owner, observer)
 
-        override fun observeBaseCurrency(owner: LifecycleOwner, observer: Observer<String>) =
-            baseCurrency.observe(owner, observer)
-
         override fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>) =
             sorting.observe(owner, observer)
 
@@ -46,22 +42,20 @@ interface CurrenciesCommunications : ObserveCurrencies {
 
     class Base(
         progress: ProgressCommunication,
-        baseCurrency: BaseCurrencyCommunication,
         sorting: UpdateSorting,
         error: ErrorCommunication,
         currenciesList: CurrenciesListCommunication,
     ) : CurrenciesCommunicationsAbstract(
-        progress, baseCurrency, sorting, error, currenciesList
+        progress, sorting, error, currenciesList
     )
 
     class Favorite(
         progress: ProgressCommunication,
-        baseCurrency: BaseCurrencyCommunication,
         sorting: UpdateSorting,
         error: ErrorCommunication,
         favoritesCommunication: FavoritesCommunication,
     ) : CurrenciesCommunicationsAbstract(
-        progress, baseCurrency, sorting, error, favoritesCommunication
+        progress, sorting, error, favoritesCommunication
     )
 }
 
@@ -70,8 +64,6 @@ interface ObserveCurrencies {
     fun observeList(owner: LifecycleOwner, observer: Observer<CurrenсiesUi>)
 
     fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>)
-
-    fun observeBaseCurrency(owner: LifecycleOwner, observer: Observer<String>)
 
     fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>)
 
