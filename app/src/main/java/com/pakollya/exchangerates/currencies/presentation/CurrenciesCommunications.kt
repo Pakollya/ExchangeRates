@@ -7,12 +7,9 @@ import com.pakollya.exchangerates.base.presentation.ErrorCommunication
 import com.pakollya.exchangerates.base.presentation.ProgressCommunication
 import com.pakollya.exchangerates.base.presentation.Visibility
 import com.pakollya.exchangerates.favorites.presentation.FavoritesCommunication
-import com.pakollya.exchangerates.names.data.BaseCurrencyCommunication
 import com.pakollya.exchangerates.sorting.data.UpdateSorting
 
-interface CurrenciesCommunications : ObserveCurrencies {
-
-    fun showProgress(show: Visibility)
+interface CurrenciesCommunications : ObserveCurrencies, ShowProgress {
 
     fun showCurrencies(currencies: CurrenсiesUi)
 
@@ -57,15 +54,4 @@ interface CurrenciesCommunications : ObserveCurrencies {
     ) : CurrenciesCommunicationsAbstract(
         progress, sorting, error, favoritesCommunication
     )
-}
-
-interface ObserveCurrencies {
-
-    fun observeList(owner: LifecycleOwner, observer: Observer<CurrenсiesUi>)
-
-    fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>)
-
-    fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>)
-
-    fun observeError(owner: LifecycleOwner, observer: Observer<String>)
 }
