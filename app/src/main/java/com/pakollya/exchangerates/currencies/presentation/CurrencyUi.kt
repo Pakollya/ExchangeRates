@@ -25,5 +25,5 @@ class CurrencyUi(
 
     override fun id(): String = id
 
-    override fun content(): String = name + isFavorite
+    override fun content(): String = value + isFavorite
 }

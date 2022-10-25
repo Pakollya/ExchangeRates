@@ -13,8 +13,8 @@ interface CurrenciesInteractor {
     )
 
     class Base(
-        private val domainMapper: CurrenciesDomain.Mapper<CurrenсiesUi>,
-        private val currencyRepository: CommonCurrencyRepository,
+        private val mapper: CurrenciesDomain.Mapper<CurrenсiesUi>,
+        private val repository: CurrenciesRepository,
         dispatchers: Dispatchers,
         handleError: HandleError
     ) : Interactor.Abstract(dispatchers, handleError), CurrenciesInteractor {
@@ -23,8 +23,8 @@ interface CurrenciesInteractor {
             atFinish: () -> Unit,
             successful: (CurrenсiesUi) -> Unit,
         ) = handle(successful, atFinish) {
-            val data = currencyRepository.currencies()
-            return@handle data.map(domainMapper)
+            val data = repository.currencies()
+            return@handle data.map(mapper)
         }
     }
 }

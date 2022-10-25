@@ -1,4 +1,4 @@
-package com.pakollya.exchangerates.currencies.presentation
+package com.pakollya.exchangerates.favorites.presentation
 
 import android.content.Context
 import android.os.Bundle
@@ -13,14 +13,14 @@ import com.pakollya.exchangerates.main.presentation.MainActivity
 import com.pakollya.exchangerates.main.presentation.ToolbarTitle
 import javax.inject.Inject
 
-class CurrenciesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
+class FavoritesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
     CurrencyListLayoutBinding::inflate
 ) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: CurrenciesViewModel
+    private lateinit var viewModel: FavoritesViewModel
 
     private var toolbarTitle: ToolbarTitle = ToolbarTitle.Empty()
 
@@ -37,29 +37,29 @@ class CurrenciesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
         binding.root.context.appComponent.inject(this)
         viewModel = injectViewModel(viewModelFactory, activity as MainActivity)
 
-        toolbarTitle.setTitle(getString(R.string.app_name))
+        toolbarTitle.setTitle(getString(R.string.favorites))
+
+        DirectionClickListener.Base()
+            .apply(
+                binding.baseButton,
+                findNavController(),
+                FavoritesFragmentDirections.actionFavoritesFragmentToNamesFragment()
+            )
+
+        BottomSheetClickListener.Base().apply(binding.sortButton, requireActivity())
 
         val currenciesAdapter = CurrenciesAdapter.Currencies()
         binding.list.adapter = currenciesAdapter
 
         val uiMapper = UiMapper(binding.baseButton)
 
-        DirectionClickListener.Base()
-            .apply(
-                binding.baseButton,
-                findNavController(),
-                CurrenciesFragmentDirections.actionCurrenciesFragmentToNamesFragment()
-            )
-
-        BottomSheetClickListener.Base().apply(binding.sortButton, requireActivity())
-
         viewModel.observeList(this) { currenciesUi ->
-            currenciesUi.map(currenciesAdapter)
-            currenciesUi.mapBase(uiMapper)
+            currenciesUi?.map(currenciesAdapter)
+            currenciesUi?.mapBase(uiMapper)
         }
 
         viewModel.observeProgress(this) { visibility ->
-            visibility.apply(binding.progress)
+            visibility?.apply(binding.progress)
         }
 
         viewModel.observeSorting(this) {

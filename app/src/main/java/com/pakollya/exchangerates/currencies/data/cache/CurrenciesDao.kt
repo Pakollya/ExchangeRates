@@ -1,13 +1,13 @@
 package com.pakollya.exchangerates.currencies.data.cache
 
 import androidx.room.*
-import com.pakollya.exchangerates.currencies.data.cache.CurrenciesCache.Currencies
+import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache.Currencies
 
 @Dao
 interface CurrenciesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCurrencies(currency: Currencies)
+    fun insertCurrencies(currencies: Currencies)
 
     @Query("SELECT * FROM currencies WHERE base = :base")
     fun currencies(base: String): Currencies
