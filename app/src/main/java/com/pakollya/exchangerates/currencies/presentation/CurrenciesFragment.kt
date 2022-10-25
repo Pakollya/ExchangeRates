@@ -62,10 +62,6 @@ class CurrenciesFragment : ViewBindingFragment<CurrencyListLayoutBinding>(
             visibility.apply(binding.progress)
         }
 
-        viewModel.observeBaseCurrency(this) {
-            viewModel.showCurrencies()
-        }
-
         viewModel.observeSorting(this) {
             viewModel.showCurrencies()
         }

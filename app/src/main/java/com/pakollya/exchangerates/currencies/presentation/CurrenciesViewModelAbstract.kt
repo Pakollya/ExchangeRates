@@ -36,9 +36,6 @@ abstract class CurrenciesViewModelAbstract (
     override fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>) =
         communication.observeProgress(owner, observer)
 
-    override fun observeBaseCurrency(owner: LifecycleOwner, observer: Observer<String>) =
-        communication.observeBaseCurrency(owner, observer)
-
     override fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>) =
         communication.observeSorting(owner, observer)
 

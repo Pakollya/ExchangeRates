@@ -11,7 +11,7 @@ class FavoritesViewModel @Inject constructor(
     @Favorite
     private val currenciesInteractor: CurrenciesInteractor,
     @Favorite
-    private val communication: CurrenciesCommunications.CurrenciesCommunicationsAbstract,
+    private val communication: CurrenciesCommunications,
     dispatchers: Dispatchers,
 ) : CurrenciesViewModelAbstract(
     currenciesInteractor,
