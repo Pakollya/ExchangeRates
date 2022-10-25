@@ -1,8 +1,8 @@
 package com.pakollya.exchangerates.currencies.data.cloud
 
 import com.google.gson.annotations.SerializedName
-import com.pakollya.exchangerates.currencies.data.cache.CurrenciesCache.Currencies
 import com.pakollya.exchangerates.currencies.data.cache.Currency
+import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache.*
 import com.pakollya.exchangerates.utils.*
 
 interface ExchangeRatesCloud {
