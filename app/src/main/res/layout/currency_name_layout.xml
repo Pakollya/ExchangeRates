@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pakollya.exchangerates.base.presentation.CustomConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/name_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <com.pakollya.exchangerates.base.presentation.CustomImageView
+        android:id="@+id/check_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerInside"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_check_sorted_by"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <com.pakollya.exchangerates.base.presentation.CustomTextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:textAppearance="@android:style/TextAppearance.Material.Title"
+        android:textSize="24sp"
+        tools:text="Name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <com.pakollya.exchangerates.base.presentation.CustomTextView
+        android:id="@+id/full_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textAlignment="textEnd"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"
+        android:maxLines="2"
+        android:ellipsize="none"
+        tools:text="value"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        />
+
+</com.pakollya.exchangerates.base.presentation.CustomConstraintLayout>
