@@ -17,8 +17,11 @@ class CurrencyNameUi(
         views[0].show(name)
         views[1].show(fullName)
         views[2].select(isBase)
-        views[3].handleClick {
-            changeBase.changeBase(id)
+        views[3].apply {
+            select(isBase)
+            handleClick {
+                changeBase.changeBase(id)
+            }
         }
     }
 

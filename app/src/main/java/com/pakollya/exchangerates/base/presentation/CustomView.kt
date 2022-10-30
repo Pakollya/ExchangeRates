@@ -137,4 +137,13 @@ class CustomConstraintLayout : ConstraintLayout, BaseView {
     override fun handleClick(listener: OnClickListener) {
         setOnClickListener(listener)
     }
+
+    override fun select(selected: Boolean) {
+        setBackgroundColor(
+            ContextCompat.getColor(
+                this.context,
+                if (selected) R.color.gray else R.color.white
+            )
+        )
+    }
 }
