@@ -32,5 +32,8 @@ class BaseCurrenciesRepository(
             .map(mapper)
     }
 
-    override fun baseCurrency() = baseCurrency.read().ifEmpty { EUR }
+    override fun baseCurrency() = baseCurrency.read().ifEmpty {
+        baseCurrency.changeBase(EUR)
+        EUR
+    }
 }
