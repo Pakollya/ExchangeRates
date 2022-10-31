@@ -11,6 +11,6 @@ class CurrenciesFragment : CurrenciesFragmentAbstract<CurrenciesViewModel>() {
     }
 
     override fun provideViewModel() {
-        viewModel = injectViewModel(viewModelFactory, activity as MainActivity)
+        viewModel = injectViewModel(viewModelFactory)
     }
 }
