@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:id="@+id/constraintLayoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/sort"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sortButton"
+            tools:listitem="@layout/sorting_layout"
+            />
+
+    </LinearLayout>
+
+</layout>
