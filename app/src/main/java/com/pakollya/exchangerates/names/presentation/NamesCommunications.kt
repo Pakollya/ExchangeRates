@@ -2,16 +2,19 @@ package com.pakollya.exchangerates.names.presentation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.pakollya.exchangerates.base.presentation.BottomNavigationCommunication
 import com.pakollya.exchangerates.base.presentation.ProgressCommunication
 import com.pakollya.exchangerates.base.presentation.Visibility
+import com.pakollya.exchangerates.currencies.presentation.ShowNavigation
 import com.pakollya.exchangerates.currencies.presentation.ShowProgress
 import com.pakollya.exchangerates.names.data.BaseCurrencyCommunication
 
-interface NamesCommunications : ObserveNames, ShowProgress {
+interface NamesCommunications : ObserveNames, ShowProgress, ShowNavigation {
 
     fun showNames(names: ItemsUi)
 
     class Base(
+        private val navigation: BottomNavigationCommunication,
         private val progress: ProgressCommunication,
         private val baseCurrency: BaseCurrencyCommunication,
         private val namesList: NamesListCommunication
@@ -20,6 +23,8 @@ interface NamesCommunications : ObserveNames, ShowProgress {
         override fun showProgress(show: Visibility) = progress.map(show)
 
         override fun showNames(names: ItemsUi) = namesList.map(names)
+
+        override fun showNavigation(show: Visibility) = navigation.map(show)
 
         override fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>) =
             progress.observe(owner, observer)

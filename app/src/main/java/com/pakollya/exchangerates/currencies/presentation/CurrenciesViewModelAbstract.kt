@@ -6,20 +6,24 @@ import com.pakollya.exchangerates.base.core.Dispatchers
 import com.pakollya.exchangerates.base.presentation.BaseViewModel
 import com.pakollya.exchangerates.base.presentation.Init
 import com.pakollya.exchangerates.base.presentation.Visibility
+import com.pakollya.exchangerates.base.presentation.Visibility.Gone
+import com.pakollya.exchangerates.base.presentation.Visibility.Visible
 import com.pakollya.exchangerates.currencies.domain.CurrenciesInteractor
 
-abstract class CurrenciesViewModelAbstract (
+abstract class CurrenciesViewModelAbstract(
     private val currenciesInteractor: CurrenciesInteractor,
     private val communication: CurrenciesCommunications,
     dispatchers: Dispatchers,
 ) : BaseViewModel(dispatchers), Init, ObserveCurrencies, ShowCurrencies {
 
-    private val atFinish = { communication.showProgress(Visibility.Gone()) }
+    private val atFinish = { communication.showProgress(Gone()) }
 
     override fun init(isFirstRun: Boolean) {
-        if (isFirstRun)
-            communication.showProgress(Visibility.Visible())
+        communication.showNavigation(Visible())
+        if (isFirstRun) {
+            communication.showProgress(Visible())
             showCurrencies()
+        }
     }
 
     override fun showCurrencies() {

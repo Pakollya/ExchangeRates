@@ -6,23 +6,25 @@ import com.pakollya.exchangerates.base.core.Dispatchers
 import com.pakollya.exchangerates.base.presentation.BaseViewModel
 import com.pakollya.exchangerates.base.presentation.Init
 import com.pakollya.exchangerates.base.presentation.Visibility
+import com.pakollya.exchangerates.base.presentation.Visibility.Gone
+import com.pakollya.exchangerates.base.presentation.Visibility.Visible
 import com.pakollya.exchangerates.names.domain.NamesInteractor
 import javax.inject.Inject
 
 class NamesViewModel @Inject constructor(
     private val namesInteractor: NamesInteractor,
     private val communication: NamesCommunications,
-    dispatchers: Dispatchers
+    dispatchers: Dispatchers,
 ) : BaseViewModel(dispatchers), ObserveNames, Init, ShowNames {
 
-    private val atFinish = {
-        communication.showProgress(Visibility.Gone())
-    }
+    private val atFinish = { communication.showProgress(Gone()) }
 
     override fun init(isFirstRun: Boolean) {
-        if (isFirstRun)
-            communication.showProgress(Visibility.Visible())
+        communication.showNavigation(Gone())
+        if (isFirstRun) {
+            communication.showProgress(Visible())
             showNames()
+        }
     }
 
     override fun showNames() {
