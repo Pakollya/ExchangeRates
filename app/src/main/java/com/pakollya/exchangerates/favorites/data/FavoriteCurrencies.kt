@@ -1,7 +1,6 @@
 package com.pakollya.exchangerates.favorites.data
 
 import com.pakollya.exchangerates.base.data.PreferenceDataStore
-import com.pakollya.exchangerates.utils.FAVORITE_KEY
 
 interface FavoriteCurrencies {
 
@@ -15,5 +14,9 @@ interface FavoriteCurrencies {
         override fun save(data: Set<String>) = preferences.save(FAVORITE_KEY, data)
 
         override fun read() = preferences.read(FAVORITE_KEY)
+
+        companion object {
+            private const val FAVORITE_KEY = "FavoriteKey"
+        }
     }
 }

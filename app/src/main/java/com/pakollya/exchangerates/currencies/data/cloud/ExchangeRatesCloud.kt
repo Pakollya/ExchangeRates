@@ -3,7 +3,6 @@ package com.pakollya.exchangerates.currencies.data.cloud
 import com.google.gson.annotations.SerializedName
 import com.pakollya.exchangerates.currencies.data.cache.Currency
 import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache.*
-import com.pakollya.exchangerates.utils.*
 
 interface ExchangeRatesCloud {
 
@@ -17,11 +16,11 @@ interface ExchangeRatesCloud {
     }
 
     data class ExchangeRates(
-        @SerializedName(BASE)
+        @SerializedName("base")
         private val base: String,
-        @SerializedName(DATE)
+        @SerializedName("date")
         private val date: String,
-        @SerializedName(RATES)
+        @SerializedName("rates")
         private val rates: Map<String, Double>
     ) : ExchangeRatesCloud {
 

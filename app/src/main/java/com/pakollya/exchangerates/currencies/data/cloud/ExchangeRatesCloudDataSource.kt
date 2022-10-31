@@ -2,7 +2,6 @@ package com.pakollya.exchangerates.currencies.data.cloud
 
 import com.pakollya.exchangerates.base.data.CloudDataSource
 import com.pakollya.exchangerates.base.data.HandleError
-import com.pakollya.exchangerates.utils.API_KEY
 
 interface ExchangeRatesCloudDataSource {
 
@@ -17,6 +16,10 @@ interface ExchangeRatesCloudDataSource {
                 currencyService.exchangeRates(API_KEY)
             else
                 currencyService.exchangeRates(API_KEY, base)
+        }
+
+        companion object {
+            private const val API_KEY = "gDxl8nyCRBj5yZbmez8pPppgNVxYxeQi"
         }
     }
 }

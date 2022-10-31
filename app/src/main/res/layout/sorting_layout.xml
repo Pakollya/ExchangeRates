@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pakollya.exchangerates.base.presentation.CustomLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sorting_item"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:focusable="true"
+    >
+
+    <com.pakollya.exchangerates.base.presentation.CustomImageView
+        android:id="@+id/sorting_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerInside"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_check_sorted_by"
+        />
+
+    <com.pakollya.exchangerates.base.presentation.CustomTextView
+        android:id="@+id/sorting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_gravity="center_vertical"
+        android:text="@string/by_name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:text="@string/by_name"
+        />
+
+</com.pakollya.exchangerates.base.presentation.CustomLinearLayout>

@@ -6,7 +6,6 @@ import com.pakollya.exchangerates.currencies.data.cloud.ExchangeRatesCloudDataSo
 import com.pakollya.exchangerates.currencies.domain.CurrenciesDomain
 import com.pakollya.exchangerates.currencies.domain.CurrenciesRepository
 import com.pakollya.exchangerates.sorting.data.SortCacheDataSource
-import com.pakollya.exchangerates.utils.EUR
 
 class BaseCurrenciesRepository(
     private val baseCurrency: BaseCurrencyCacheDataSource,
@@ -35,5 +34,9 @@ class BaseCurrenciesRepository(
     override fun baseCurrency() = baseCurrency.read().ifEmpty {
         baseCurrency.changeBase(EUR)
         EUR
+    }
+
+    companion object {
+        private const val EUR = "EUR"
     }
 }

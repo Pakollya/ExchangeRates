@@ -38,7 +38,7 @@ class NamesFragment : ViewBindingFragment<CurrencyNameListLayoutBinding>(
     ) {
         super.onViewBindingCreated(binding, savedInstanceState)
         binding.root.context.appComponent.inject(this)
-        viewModel = injectViewModel(viewModelFactory, activity as MainActivity)
+        viewModel = injectViewModel(viewModelFactory)
 
         toolbarTitle.setTitle(getString(R.string.currencies))
         toolbarNavigation.setDirection()

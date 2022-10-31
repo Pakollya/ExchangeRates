@@ -18,6 +18,6 @@ class FavoritesFragment : CurrenciesFragmentAbstract<FavoritesViewModel>() {
     }
 
     override fun provideViewModel() {
-        viewModel = injectViewModel(viewModelFactory, activity as MainActivity)
+        viewModel = injectViewModel(viewModelFactory)
     }
 }

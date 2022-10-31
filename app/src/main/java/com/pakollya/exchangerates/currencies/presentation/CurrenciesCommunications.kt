@@ -2,18 +2,16 @@ package com.pakollya.exchangerates.currencies.presentation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.pakollya.exchangerates.base.presentation.Communication
-import com.pakollya.exchangerates.base.presentation.ErrorCommunication
-import com.pakollya.exchangerates.base.presentation.ProgressCommunication
-import com.pakollya.exchangerates.base.presentation.Visibility
+import com.pakollya.exchangerates.base.presentation.*
 import com.pakollya.exchangerates.favorites.presentation.FavoritesCommunication
 import com.pakollya.exchangerates.sorting.data.UpdateSorting
 
-interface CurrenciesCommunications : ObserveCurrencies, ShowProgress {
+interface CurrenciesCommunications : ObserveCurrencies, ShowProgress, ShowNavigation {
 
     fun showCurrencies(currencies: CurrenсiesUi)
 
     abstract class CurrenciesCommunicationsAbstract(
+        private val navigation: BottomNavigationCommunication,
         private val progress: ProgressCommunication,
         private val sorting: UpdateSorting,
         private val error: ErrorCommunication,
@@ -24,6 +22,8 @@ interface CurrenciesCommunications : ObserveCurrencies, ShowProgress {
             currenciesList.observe(owner, observer)
 
         override fun showProgress(show: Visibility) = progress.map(show)
+
+        override fun showNavigation(show: Visibility) = navigation.map(show)
 
         override fun showCurrencies(currencies: CurrenсiesUi) = currenciesList.map(currencies)
 
@@ -38,20 +38,22 @@ interface CurrenciesCommunications : ObserveCurrencies, ShowProgress {
     }
 
     class Base(
+        navigation: BottomNavigationCommunication,
         progress: ProgressCommunication,
         sorting: UpdateSorting,
         error: ErrorCommunication,
         currenciesList: CurrenciesListCommunication,
     ) : CurrenciesCommunicationsAbstract(
-        progress, sorting, error, currenciesList
+        navigation, progress, sorting, error, currenciesList
     )
 
     class Favorite(
+        navigation: BottomNavigationCommunication,
         progress: ProgressCommunication,
         sorting: UpdateSorting,
         error: ErrorCommunication,
         favoritesCommunication: FavoritesCommunication,
     ) : CurrenciesCommunicationsAbstract(
-        progress, sorting, error, favoritesCommunication
+        navigation, progress, sorting, error, favoritesCommunication
     )
 }

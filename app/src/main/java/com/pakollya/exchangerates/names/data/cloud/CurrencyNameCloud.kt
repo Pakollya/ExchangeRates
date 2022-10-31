@@ -5,8 +5,6 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.pakollya.exchangerates.base.data.IsEmpty
 import com.pakollya.exchangerates.names.domain.CurrencyNameDomain
-import com.pakollya.exchangerates.utils.CURRENCY_NAME
-import com.pakollya.exchangerates.utils.SYMBOLS
 
 interface CurrencyNameCloud {
 
@@ -17,10 +15,10 @@ interface CurrencyNameCloud {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(emptyMap())
     }
 
-    @Entity(tableName = CURRENCY_NAME)
+    @Entity(tableName = "currency_name")
     data class CurrencyNames(
         @PrimaryKey
-        @SerializedName(SYMBOLS)
+        @SerializedName("symbols")
         val symbols: Map<String, String>
     ) : CurrencyNameCloud, IsEmpty {
 
