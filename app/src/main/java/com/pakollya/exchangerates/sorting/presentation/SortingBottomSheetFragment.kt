@@ -28,7 +28,7 @@ class SortingBottomSheetFragment : BottomSheetDialogFragment() {
     ): View {
         binding = BottomSheetSortingLayoutBinding.inflate(inflater, container, false)
         binding.root.context.appComponent.inject(this)
-        viewModel = injectViewModel(viewModelFactory, activity as MainActivity)
+        viewModel = injectViewModel(viewModelFactory)
 
         val adapter = SortingAdapter.Sorting()
         binding.list.adapter = adapter
