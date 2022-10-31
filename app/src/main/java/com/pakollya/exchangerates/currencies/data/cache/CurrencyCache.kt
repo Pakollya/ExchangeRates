@@ -8,7 +8,6 @@ import com.pakollya.exchangerates.base.data.IsValid
 import com.pakollya.exchangerates.sorting.domain.Sorting.Companion.sorting
 import com.pakollya.exchangerates.currencies.domain.CurrenciesDomain
 import com.pakollya.exchangerates.sorting.domain.Sorting.*
-import com.pakollya.exchangerates.utils.CURRENCIES
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -18,7 +17,7 @@ interface CurrencyCache {
 
     fun sort(sortName: String): CurrencyCache
 
-    @Entity(tableName = CURRENCIES)
+    @Entity(tableName = "currencies")
     data class Currencies(
         @PrimaryKey
         val base: String,

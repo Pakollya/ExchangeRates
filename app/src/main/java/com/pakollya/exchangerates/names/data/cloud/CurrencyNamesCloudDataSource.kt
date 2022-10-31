@@ -2,7 +2,6 @@ package com.pakollya.exchangerates.names.data.cloud
 
 import com.pakollya.exchangerates.base.data.CloudDataSource
 import com.pakollya.exchangerates.base.data.HandleError
-import com.pakollya.exchangerates.utils.API_KEY
 
 interface CurrencyNamesCloudDataSource {
 
@@ -15,6 +14,10 @@ interface CurrencyNamesCloudDataSource {
 
         override suspend fun names() = handle {
             currencyNameService.names(API_KEY)
+        }
+
+        companion object {
+            private const val API_KEY = "gDxl8nyCRBj5yZbmez8pPppgNVxYxeQi"
         }
     }
 }

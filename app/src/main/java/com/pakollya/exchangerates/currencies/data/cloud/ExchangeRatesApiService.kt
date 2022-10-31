@@ -2,7 +2,6 @@ package com.pakollya.exchangerates.currencies.data.cloud
 
 import com.pakollya.exchangerates.base.data.MakeService
 import com.pakollya.exchangerates.base.data.RetrofitBuilder
-import com.pakollya.exchangerates.utils.BASE_URL
 
 interface ExchangeRatesApiService {
 
@@ -18,5 +17,9 @@ interface ExchangeRatesApiService {
 
         override fun exchangeRatesService(): ExchangeRatesService =
             service(ExchangeRatesService::class.java)
+
+        companion object {
+            private const val BASE_URL = "https://api.apilayer.com/exchangerates_data/"
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.pakollya.exchangerates.sorting.data
 
 import com.pakollya.exchangerates.base.data.PreferenceDataStore
-import com.pakollya.exchangerates.utils.CURRENCY_SORTING_KEY
 
 interface CurrencySorting {
 
@@ -15,5 +14,9 @@ interface CurrencySorting {
         override fun save(data: String) = preferences.save(CURRENCY_SORTING_KEY, data)
 
         override fun read() = preferences.read(CURRENCY_SORTING_KEY)
+
+        companion object {
+            private const val CURRENCY_SORTING_KEY = "CurrencySortingKey"
+        }
     }
 }

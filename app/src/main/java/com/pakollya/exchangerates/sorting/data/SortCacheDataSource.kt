@@ -2,7 +2,6 @@ package com.pakollya.exchangerates.sorting.data
 
 import com.pakollya.exchangerates.base.core.Read
 import com.pakollya.exchangerates.sorting.presentation.ChangeSort
-import com.pakollya.exchangerates.utils.SORT_BY_NAME
 
 interface SortCacheDataSource : ChangeSort, IsSorting, Read<String> {
 
@@ -24,5 +23,9 @@ interface SortCacheDataSource : ChangeSort, IsSorting, Read<String> {
                 changeSort(SORT_BY_NAME)
                 SORT_BY_NAME
             }
+
+        companion object {
+            private const val SORT_BY_NAME = "by name"
+        }
     }
 }
