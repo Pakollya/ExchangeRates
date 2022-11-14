@@ -54,8 +54,8 @@ class NamesFragment : ViewBindingFragment<CurrencyNameListLayoutBinding>(
             viewModel.showNames()
         }
 
-        viewModel.observeProgress(this) { visibility ->
-            visibility.apply(binding.progress)
+        viewModel.observeProgress(this) {
+            binding.progress.visibility = it
         }
 
         viewModel.init(savedInstanceState == null)

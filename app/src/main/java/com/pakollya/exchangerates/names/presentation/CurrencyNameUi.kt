@@ -3,7 +3,7 @@ package com.pakollya.exchangerates.names.presentation
 import com.pakollya.exchangerates.base.presentation.BaseView
 import com.pakollya.exchangerates.base.presentation.ItemUi
 
-class CurrencyNameUi(
+data class CurrencyNameUi(
     private val id: String,
     private val name: String,
     private val fullName: String,

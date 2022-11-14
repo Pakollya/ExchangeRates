@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), ToolbarTitle, ToolbarNavigation {
         setupWithNavController(binding.bottomNavigationView, navController)
 
         viewModel.observe(this) {
-            it.apply(binding.bottomNavigationView)
+            binding.bottomNavigationView.visibility = it
         }
     }
 

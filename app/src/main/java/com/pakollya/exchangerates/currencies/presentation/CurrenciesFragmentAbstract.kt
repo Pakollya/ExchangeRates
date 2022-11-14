@@ -67,8 +67,8 @@ abstract class CurrenciesFragmentAbstract<VM : CurrenciesViewModelAbstract> :
             currenciesUi.mapBase(uiMapper)
         }
 
-        viewModel.observeProgress(this) { visibility ->
-            visibility.apply(binding.progress)
+        viewModel.observeProgress(this) {
+            binding.progress.visibility = it
         }
 
         viewModel.observeSorting(this) {

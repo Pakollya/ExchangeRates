@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     communication: BottomNavigationCommunication,
     dispatchers: Dispatchers
-) : ViewModelAbstract<Visibility>(
+) : ViewModelAbstract<Int>(
     communication,
     dispatchers
 )

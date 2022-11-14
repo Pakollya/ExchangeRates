@@ -3,7 +3,7 @@ package com.pakollya.exchangerates.sorting.presentation
 import com.pakollya.exchangerates.base.presentation.BaseView
 import com.pakollya.exchangerates.base.presentation.ItemUi
 
-class SortingUi(
+data class SortingUi(
     private val id: String,
     private val text: String,
     private val isSorting: Boolean,
