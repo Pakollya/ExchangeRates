@@ -1,5 +1,6 @@
 package com.pakollya.exchangerates.currencies.data
 
+import com.pakollya.exchangerates.currencies.data.cache.BaseCurrencyCacheDataSource
 import com.pakollya.exchangerates.currencies.data.cache.CurrenciesCacheDataSource
 import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache
 import com.pakollya.exchangerates.currencies.data.cloud.ExchangeRatesCloudDataSource
