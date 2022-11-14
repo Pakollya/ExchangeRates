@@ -10,7 +10,7 @@ import com.pakollya.exchangerates.base.data.*
 import com.pakollya.exchangerates.base.domain.HandleDomainError
 import com.pakollya.exchangerates.base.presentation.*
 import com.pakollya.exchangerates.currencies.data.BaseCurrenciesRepository
-import com.pakollya.exchangerates.currencies.data.BaseCurrencyCacheDataSource
+import com.pakollya.exchangerates.currencies.data.cache.BaseCurrencyCacheDataSource
 import com.pakollya.exchangerates.currencies.data.cache.CurrenciesCache
 import com.pakollya.exchangerates.currencies.data.cache.CurrenciesCacheDataSource
 import com.pakollya.exchangerates.currencies.data.cache.CurrencyCache.Currencies
