@@ -9,7 +9,7 @@ import com.pakollya.exchangerates.sorting.presentation.SortingUi
 interface SortingDomain{
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val list: List<String>
     ) : SortingDomain {
 
