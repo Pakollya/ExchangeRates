@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)
-class CurrenciesFragmentTest : BaseTest() {
+class MainActivityTest : BaseTest() {
 
     private lateinit var date: String
     private lateinit var delay: ViewDelay
