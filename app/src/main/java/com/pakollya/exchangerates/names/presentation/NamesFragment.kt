@@ -44,7 +44,7 @@ class NamesFragment : ViewBindingFragment<CurrencyNameListLayoutBinding>(
         toolbarNavigation.setDirection()
 
         val namesAdapter = CurrencyNameAdapter.Names()
-        binding.list.adapter = namesAdapter
+        binding.namesList.adapter = namesAdapter
 
         viewModel.observeNames(this) { currenciesUi ->
             currenciesUi?.map(namesAdapter)

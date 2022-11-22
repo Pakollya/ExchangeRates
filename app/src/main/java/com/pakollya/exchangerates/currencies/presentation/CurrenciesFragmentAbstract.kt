@@ -48,7 +48,7 @@ abstract class CurrenciesFragmentAbstract<VM : CurrenciesViewModelAbstract> :
         toolbarTitle.setTitle(title)
 
         val currenciesAdapter = CurrenciesAdapter.Currencies()
-        binding.list.adapter = currenciesAdapter
+        binding.currenciesList.adapter = currenciesAdapter
 
         navigateOnClick(binding.baseButton, findNavController(), direction)
 
