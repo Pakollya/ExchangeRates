@@ -21,13 +21,13 @@ interface CurrenciesCommunications : ObserveCurrencies, ShowProgress, ShowNaviga
         override fun observeList(owner: LifecycleOwner, observer: Observer<CurrenсiesUi>) =
             currenciesList.observe(owner, observer)
 
-        override fun showProgress(show: Visibility) = progress.map(show)
+        override fun showProgress(show: Int) = progress.map(show)
 
-        override fun showNavigation(show: Visibility) = navigation.map(show)
+        override fun showNavigation(show: Int) = navigation.map(show)
 
         override fun showCurrencies(currencies: CurrenсiesUi) = currenciesList.map(currencies)
 
-        override fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>) =
+        override fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>) =
             progress.observe(owner, observer)
 
         override fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>) =

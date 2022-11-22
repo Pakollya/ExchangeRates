@@ -20,13 +20,13 @@ interface NamesCommunications : ObserveNames, ShowProgress, ShowNavigation {
         private val namesList: NamesListCommunication
     ) : NamesCommunications {
 
-        override fun showProgress(show: Visibility) = progress.map(show)
+        override fun showProgress(show: Int) = progress.map(show)
 
         override fun showNames(names: ItemsUi) = namesList.map(names)
 
-        override fun showNavigation(show: Visibility) = navigation.map(show)
+        override fun showNavigation(show: Int) = navigation.map(show)
 
-        override fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>) =
+        override fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>) =
             progress.observe(owner, observer)
 
         override fun observeNames(owner: LifecycleOwner, observer: Observer<ItemsUi>) =

@@ -20,7 +20,7 @@ interface SortingInteractor {
 
         override suspend fun sorting(
             successful: (ItemsUi) -> Unit
-        ) = handle(successful, {}) {
+        ) = handle(successful) {
             val data = sortingRepository.sorting()
             return@handle data.map(sortingDomainMapper)
         }
