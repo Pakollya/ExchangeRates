@@ -3,7 +3,7 @@ package com.pakollya.exchangerates.currencies.presentation
 import com.pakollya.exchangerates.base.presentation.BaseView
 import com.pakollya.exchangerates.base.presentation.ItemUi
 
-class DateUi(private val text: String) : ItemUi {
+data class DateUi(private val text: String) : ItemUi {
 
     override fun type(): Int = 2
 

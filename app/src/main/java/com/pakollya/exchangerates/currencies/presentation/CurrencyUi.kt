@@ -4,7 +4,7 @@ import com.pakollya.exchangerates.base.presentation.BaseView
 import com.pakollya.exchangerates.base.presentation.ItemUi
 import com.pakollya.exchangerates.favorites.presentation.ChangeFavorite
 
-class CurrencyUi(
+data class CurrencyUi(
     private val id: String,
     private val name: String,
     private val value: String,

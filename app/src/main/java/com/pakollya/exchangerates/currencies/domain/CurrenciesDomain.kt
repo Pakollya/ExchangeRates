@@ -10,7 +10,7 @@ interface CurrenciesDomain {
 
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val base: String,
         private val date: String,
         private val list: List<Currency>

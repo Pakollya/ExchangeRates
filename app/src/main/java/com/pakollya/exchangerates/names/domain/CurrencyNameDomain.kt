@@ -1,7 +1,7 @@
 package com.pakollya.exchangerates.names.domain
 
 import com.pakollya.exchangerates.base.presentation.ItemUi
-import com.pakollya.exchangerates.currencies.data.BaseCurrencyCacheDataSource
+import com.pakollya.exchangerates.currencies.data.cache.BaseCurrencyCacheDataSource
 import com.pakollya.exchangerates.names.presentation.ChangeBaseCurrency
 import com.pakollya.exchangerates.names.presentation.CurrencyNameUi
 import com.pakollya.exchangerates.names.presentation.ItemsUi
@@ -10,7 +10,7 @@ interface CurrencyNameDomain {
 
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val list: List<Pair<String, String>>
     ) : CurrencyNameDomain {
 

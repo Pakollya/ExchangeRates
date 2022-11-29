@@ -48,7 +48,7 @@ abstract class CurrenciesFragmentAbstract<VM : CurrenciesViewModelAbstract> :
         toolbarTitle.setTitle(title)
 
         val currenciesAdapter = CurrenciesAdapter.Currencies()
-        binding.list.adapter = currenciesAdapter
+        binding.currenciesList.adapter = currenciesAdapter
 
         navigateOnClick(binding.baseButton, findNavController(), direction)
 
@@ -67,8 +67,8 @@ abstract class CurrenciesFragmentAbstract<VM : CurrenciesViewModelAbstract> :
             currenciesUi.mapBase(uiMapper)
         }
 
-        viewModel.observeProgress(this) { visibility ->
-            visibility.apply(binding.progress)
+        viewModel.observeProgress(this) {
+            binding.progress.visibility = it
         }
 
         viewModel.observeSorting(this) {

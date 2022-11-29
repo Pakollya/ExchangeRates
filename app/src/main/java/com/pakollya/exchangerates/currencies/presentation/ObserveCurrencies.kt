@@ -8,7 +8,7 @@ interface ObserveCurrencies {
 
     fun observeList(owner: LifecycleOwner, observer: Observer<CurrenсiesUi>)
 
-    fun observeProgress(owner: LifecycleOwner, observer: Observer<Visibility>)
+    fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>)
 
     fun observeSorting(owner: LifecycleOwner, observer: Observer<Boolean>)
 

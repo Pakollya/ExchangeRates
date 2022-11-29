@@ -31,7 +31,7 @@ class SortingBottomSheetFragment : BottomSheetDialogFragment() {
         viewModel = injectViewModel(viewModelFactory)
 
         val adapter = SortingAdapter.Sorting()
-        binding.list.adapter = adapter
+        binding.sortingList.adapter = adapter
 
         viewModel.init(savedInstanceState == null)
 

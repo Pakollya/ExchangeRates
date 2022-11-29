@@ -8,7 +8,6 @@ import com.pakollya.exchangerates.names.presentation.ItemsUi
 interface NamesInteractor {
 
     suspend fun names(
-        atFinish: () -> Unit,
         successful: (ItemsUi) -> Unit
     )
 
@@ -20,9 +19,8 @@ interface NamesInteractor {
     ) : Interactor.Abstract(dispatchers, handleError), NamesInteractor {
 
         override suspend fun names(
-            atFinish: () -> Unit,
             successful: (ItemsUi) -> Unit
-        ) = handle(successful, atFinish) {
+        ) = handle(successful) {
             val data = repository.names()
             return@handle data.map(mapper)
         }

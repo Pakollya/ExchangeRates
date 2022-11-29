@@ -8,14 +8,12 @@ interface SortCacheDataSource : ChangeSort, IsSorting, Read<String> {
     class Base(
         private val currencySorting: CurrencySorting.Mutable,
     ) : SortCacheDataSource {
-        private var cached = read()
 
         override fun changeSort(sorting: String) {
             currencySorting.save(sorting)
-            cached = read()
         }
 
-        override fun isSorting(sorting: String) = cached == sorting
+        override fun isSorting(sorting: String) = read() == sorting
 
         override fun read() = currencySorting
             .read()

@@ -8,7 +8,6 @@ import com.pakollya.exchangerates.currencies.presentation.CurrenсiesUi
 interface CurrenciesInteractor {
 
     suspend fun currencies(
-        atFinish: () -> Unit,
         successful: (CurrenсiesUi) -> Unit
     )
 
@@ -20,9 +19,8 @@ interface CurrenciesInteractor {
     ) : Interactor.Abstract(dispatchers, handleError), CurrenciesInteractor {
 
         override suspend fun currencies(
-            atFinish: () -> Unit,
-            successful: (CurrenсiesUi) -> Unit,
-        ) = handle(successful, atFinish) {
+            successful: (CurrenсiesUi) -> Unit
+        ) = handle(successful) {
             val data = repository.currencies()
             return@handle data.map(mapper)
         }
